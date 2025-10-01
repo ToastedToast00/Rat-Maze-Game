@@ -21,3 +21,6 @@ Hopefully you can expect a handful of features coming to the game which are to b
     Godot is recommended for the contribution of scenes, scripts, and node editing
 - Blender 4.0+ <br>
     Blender is recommended for the contribution of models and animations 
+<br><br>
+To contribute to the project be sure to create a separate branch dedicated to the contributions made. <br>
+The project's workflow is to create issues and address them in seperate branches and have them be reviewed by the creator of the repository.<br>
