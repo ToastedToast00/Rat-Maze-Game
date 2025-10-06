@@ -18,7 +18,8 @@ Hopefully you can expect a handful of features coming to the game which are to b
 - [ ] Skins locked behind difficulty
 - [ ] Level Editor Uploading and accessible to all.
 ## How to Contribute?
-IMPORTANT: All contributions to this project are completely for free, do not expect pay or promotion as you will not recieve it.
+IMPORTANT: All contributions to this project are completely for free, do not expect pay or promotion as you will not recieve it.<br>
+> You may however find your username put on a credits page in the future.<br>
 - [Godot 4.5+](https://godotengine.org/download/windows/) (Required) (Latest stable) <br>
     Godot is required for the contribution of scenes, scripts, and node editing
 - [Blender 4.0+](https://www.blender.org/download/) (Required) (Latest stable)<br>
