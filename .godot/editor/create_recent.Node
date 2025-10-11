@@ -1,0 +1,15 @@
+XROrigin3D
+XRCamera3D
+CollisionShape3D
+ShapeCast3D
+MeshInstance3D
+CharacterBody3D
+DirectionalLight3D
+CSGBox3D
+Label
+HBoxContainer
+CheckBox
+VBoxContainer
+Panel
+OptionButton
+Button

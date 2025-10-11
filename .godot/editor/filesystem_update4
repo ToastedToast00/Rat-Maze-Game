@@ -1,0 +1,5 @@
+res://scenes/levels/level_0.tscn
+res://scenes/player/player.tscn
+res://scenes/menu/settings.tscn
+res://scenes/menu/main_menu.tscn
+res://scripts/player/player.gd
