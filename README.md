@@ -3,9 +3,12 @@
 A remake of a game I made in Scratch in 2020 and finished for school in 2023. <br>
 [You can view the game here](https://scratch.mit.edu/projects/615103018/) in which you control a rat through a maze to the end of each level. <br>
 <img width="492" height="367" alt="image" src="https://github.com/user-attachments/assets/dbfbd54b-df31-4a84-9d51-186aafc4c250" />
-<br>
+<br><br>
 The image depicts the first level made in the iteration of the game that was made public for a school project. <br>
-The starting point is not marked but on the left side of the picture, with the end goal being the lighter colored green shape.
+The starting point is not marked but on the left side of the picture, with the end goal being the lighter colored green shape.<br><br>
+<img width="1325" height="584" alt="image" src="https://github.com/user-attachments/assets/1a95ac56-a7a0-4b83-8907-9a39d97fea6a" />
+<br>
+Above is a picture of the rat model in progress from .01, textures to come
 ## Primary Goals
 The aim of this repository and game is to make the game linked above in Godot as not just a remake but also expansion.<br>
 Hopefully you can expect a handful of features coming to the game which are to be listed below: <br>
