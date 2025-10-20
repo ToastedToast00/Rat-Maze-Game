@@ -20,12 +20,23 @@ Hopefully you can expect a handful of features coming to the game which are to b
 - [ ] Level Editor Uploading and accessible to all.
 
 ## How to navigate branches and versions
-Main branch will be the most recent branch that is going to be uploaded via GitHub Desktop, and have it's name updated to reflect a version, 
-given how early this is being implemented I will be titling the main branch to be 0.01 after I figure out my current issues with the recent branch pull request, 
-with an attempt at a weekly update including a small bit of a devlog in the discussions tab for anyone to suggest ideas.
-
+Main branch will be the most recent branch that is going to be uploaded via GitHub Desktop, and have it's name updated to reflect a version, naming scheme as follows:
+- Pre-Alpha, a hopefully temporary prefix to branches indicates that the game is not yet feature complete and does not feature a working level
+- Alpha, the aim of the project by the end of December 2025, Alpha contains core features fully implemented and a test level for testing and development purposes.
+### The version naming scheme
+- .01 > .02: Indicates a small patch or update including various bugfixes, code changes, and possibly minor additions
+- .01 > .10: Indicates a major change containing major features or levels into the game that will be a noticable improvement overall.
 ## How to Contribute?
 - Godot 4.5+ (latest stable) <br>
-    Godot is recommended for the contribution of scenes, scripts, and node editing
+    Godot is required for the contribution of scenes, scripts, and node editing
 - Blender 4.0+ <br>
-    Blender is recommended for the contribution of models and animations 
+    Blender is required for the contribution of models and animations
+## How can I play?
+In order to play you must have Godot installed and have 1 method of going about this.
+### Step by Step instructions
+- Download the files in the repo and put them into one clear folder.
+- In Godot click on "Import"
+- Navigate to the folder where the game is located while inside of Godot
+- Click on "Select This Folder"
+- Once the game is recognized be sure to click on the game while in Godot then click on Run
+- If editing the files be sure to use F5 to run the game, and F6 to run a specific scene.
