@@ -1,6 +1,6 @@
-# Rat-Maze-Game
+# Whisker Light
 
-### Looking for a proper game name, suggestions welcomed
+### Take a rat through a maze
 A remake of a game I made in Scratch in 2020 and finished for school in 2023. <br>
 
 The game can be found
