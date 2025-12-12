@@ -6,10 +6,8 @@ func _on_start_pressed() -> void:
 	pass
 
 func _on_options_pressed() -> void:
-	#TODO: make options accessable as a instance to
-	#      make menu useable outside of menu
 	get_tree().change_scene_to_file("res://scenes/menu/settings.tscn")
-	pass # Replace with function body.
+	pass
 
 
 func _on_quit_pressed() -> void:

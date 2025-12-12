@@ -1,13 +1,12 @@
 [gd_scene load_steps=5 format=3 uid="uid://cklswh6ctfr38"]
 
 [ext_resource type="Script" uid="uid://bs4vewt5775yn" path="res://scripts/menu/main_menu.gd" id="1_3rkf3"]
-[ext_resource type="Texture2D" uid="uid://ddqcxyy7nl7nl" path="res://assets/pictures/Title.jpg" id="1_nl8w3"]
+[ext_resource type="Texture2D" uid="uid://cqj27ifbcbtl0" path="res://assets/pictures/WhiskerLight.png" id="2_3rkf3"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3rkf3"]
-texture = ExtResource("1_nl8w3")
+texture = ExtResource("2_3rkf3")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_70654"]
-bg_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
@@ -72,7 +71,7 @@ theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_70654")
-text = "Start game"
+text = "Start Game"
 
 [node name="Options_button" type="Button" parent="HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(50, 0)

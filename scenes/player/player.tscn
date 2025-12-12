@@ -1,9 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://cuj1rienf2yql"]
+[gd_scene load_steps=8 format=3 uid="uid://cuj1rienf2yql"]
 
-[ext_resource type="ArrayMesh" uid="uid://3aj521whbirm" path="res://assets/model/Ratone.obj" id="1_8afob"]
 [ext_resource type="Script" uid="uid://bj840xm27o4xn" path="res://scripts/player/player.gd" id="1_dovo2"]
+[ext_resource type="ArrayMesh" uid="uid://d2toh32qvnafs" path="res://assets/model/Rattwo.mtl.obj" id="2_lvxji"]
+[ext_resource type="Script" uid="uid://ntp2pcala3fy" path="res://scripts/player/cameraGrouping.gd" id="3_gmlin"]
+[ext_resource type="PackedScene" uid="uid://bow70eda3p6av" path="res://scenes/levels/pause_menu.tscn" id="4_lvxji"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dovo2"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gmlin"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lvxji"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_p47bc"]
 
 [node name="player" type="Node3D"]
 
@@ -11,16 +17,29 @@
 script = ExtResource("1_dovo2")
 metadata/_edit_group_ = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="playableCharacter"]
+[node name="Model" type="MeshInstance3D" parent="playableCharacter"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
-mesh = ExtResource("1_8afob")
+mesh = ExtResource("2_lvxji")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="playableCharacter"]
-transform = Transform3D(0.25, 0, 0, 0, -1.09278e-08, -0.25, 0, 0.25, -1.09278e-08, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_dovo2")
+[node name="Hitbox-Body" type="CollisionShape3D" parent="playableCharacter"]
+transform = Transform3D(0.19, 0, 0, 0, -7.03204e-09, -0.144, 0, 0.160875, -6.29444e-09, 0, 0, 0.0059361)
+shape = SubResource("CapsuleShape3D_gmlin")
 
-[node name="XROrigin3D" type="XROrigin3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 1, 0.1)
+[node name="Hitbox-Tail" type="CollisionShape3D" parent="playableCharacter"]
+transform = Transform3D(0.025, 0, 0, 0, 0.0247024, -0.0346158, 0, 0.0038462, 0.222321, 0, -0.0279758, 0.314904)
+shape = SubResource("BoxShape3D_lvxji")
 
-[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+[node name="Hitbox-Face" type="CollisionShape3D" parent="playableCharacter"]
+transform = Transform3D(0.072, 0, 0, 0, 0.0408, 0, 0, 0, 0.0648, 0, 0, -0.219534)
+shape = SubResource("SphereShape3D_p47bc")
+
+[node name="cameraGrouping" type="XROrigin3D" parent="playableCharacter"]
+script = ExtResource("3_gmlin")
+
+[node name="topDownCamera" type="XRCamera3D" parent="playableCharacter/cameraGrouping"]
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 1.5, 0.1)
+
+[node name="frontFacingCamera" type="XRCamera3D" parent="playableCharacter/cameraGrouping"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0.119585, -0.120004)
+
+[node name="PauseMenu" parent="." instance=ExtResource("4_lvxji")]

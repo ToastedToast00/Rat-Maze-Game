@@ -1,14 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://do5dqisiv24u0"]
+[gd_scene load_steps=7 format=3 uid="uid://do5dqisiv24u0"]
 
 [ext_resource type="Script" uid="uid://pelhjjm5on4r" path="res://scripts/menu/settings.gd" id="1_dxr1k"]
-[ext_resource type="Texture2D" uid="uid://ddqcxyy7nl7nl" path="res://assets/pictures/Title.jpg" id="1_rqcjd"]
+[ext_resource type="Texture2D" uid="uid://cqj27ifbcbtl0" path="res://assets/pictures/WhiskerLight.png" id="2_0t5g5"]
 [ext_resource type="Script" uid="uid://dqyua1apqe080" path="res://scripts/menu/settings_control.gd" id="3_37860"]
+[ext_resource type="Script" uid="uid://c3nl3n6fy86q7" path="res://scripts/menu/inputControl.gd" id="4_0t5g5"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dxr1k"]
-texture = ExtResource("1_rqcjd")
+texture = ExtResource("2_0t5g5")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rqcjd"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.364706, 0.694118, 0, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
@@ -52,6 +53,7 @@ offset_right = 0.23999
 offset_bottom = 225.32
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 100
 
 [node name="settings_control" type="VBoxContainer" parent="settings"]
 layout_mode = 2
@@ -109,7 +111,7 @@ popup/item_2/id = 2
 [node name="keyBind" type="Button" parent="settings/settings_control"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/icon_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -146,36 +148,74 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_rqcjd")
 text = "Go Back"
 
 [node name="input_control" type="VBoxContainer" parent="settings"]
+visible = false
 layout_mode = 2
+size_flags_horizontal = 2
+theme_override_constants/separation = 20
+script = ExtResource("4_0t5g5")
 
 [node name="mForward" type="HBoxContainer" parent="settings/input_control"]
 layout_mode = 2
+alignment = 2
 
 [node name="movementForward" type="Label" parent="settings/input_control/mForward"]
 layout_mode = 2
 text = "Move Forward"
+horizontal_alignment = 2
+
+[node name="moveForward" type="LineEdit" parent="settings/input_control/mForward"]
+layout_mode = 2
+alignment = 2
 
 [node name="mBackward" type="HBoxContainer" parent="settings/input_control"]
 layout_mode = 2
+alignment = 2
 
 [node name="movementBackward" type="Label" parent="settings/input_control/mBackward"]
 layout_mode = 2
 text = "Move Backward"
+horizontal_alignment = 2
+
+[node name="moveBackward" type="LineEdit" parent="settings/input_control/mBackward"]
+layout_mode = 2
+alignment = 2
 
 [node name="mLeft" type="HBoxContainer" parent="settings/input_control"]
 layout_mode = 2
+alignment = 2
 
 [node name="movementLeft" type="Label" parent="settings/input_control/mLeft"]
 layout_mode = 2
 text = "Turn Left"
+horizontal_alignment = 2
+
+[node name="turnLeft" type="LineEdit" parent="settings/input_control/mLeft"]
+layout_mode = 2
+alignment = 2
 
 [node name="mRight" type="HBoxContainer" parent="settings/input_control"]
 layout_mode = 2
+alignment = 2
 
 [node name="movementRight" type="Label" parent="settings/input_control/mRight"]
 layout_mode = 2
 text = "Turn Right"
 
-[connection signal="pressed" from="settings/settings_control/keyBind" to="settings/settings_control" method="_on_key_bind_pressed"]
+[node name="turnRight" type="LineEdit" parent="settings/input_control/mRight"]
+layout_mode = 2
+alignment = 2
+
+[node name="tCamera" type="HBoxContainer" parent="settings/input_control"]
+layout_mode = 2
+alignment = 2
+
+[node name="toggleCamera" type="Label" parent="settings/input_control/tCamera"]
+layout_mode = 2
+text = "Toggle Camera"
+
+[node name="cameraSwap" type="LineEdit" parent="settings/input_control/tCamera"]
+layout_mode = 2
+
+[connection signal="pressed" from="settings/settings_control/keyBind" to="." method="_on_keyBind_pressed"]
 [connection signal="pressed" from="settings/settings_control/confirmSetting" to="settings/settings_control" method="_on_confirm_setting_pressed"]
 [connection signal="pressed" from="settings/settings_control/goBack" to="settings/settings_control" method="_on_go_back_pressed"]
