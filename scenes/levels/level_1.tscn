@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3xgn5r02kwuw"]
+
+[ext_resource type="PackedScene" uid="uid://cuj1rienf2yql" path="res://scenes/player/player.tscn" id="1_ksju7"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+
+[node name="Floor" type="CSGBox3D" parent="WorldEnvironment"]
+transform = Transform3D(2.96229, 0, 0, 0, 1, 0, 0, 0, 4.65196, 0, -0.6, 0)
+size = Vector3(4, 1, 3)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.666537, 0.0960039, -0.739264, 0.730598, 0.112985, 0.673396, 0.148174, -0.988948, 0.00516823, 0, 1.7, 4.9)
+
+[node name="player-marker" type="Marker3D" parent="."]
+
+[node name="player" parent="player-marker" instance=ExtResource("1_ksju7")]

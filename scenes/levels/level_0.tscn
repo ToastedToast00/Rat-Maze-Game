@@ -1,13 +1,154 @@
-[gd_scene load_steps=2 format=3 uid="uid://boyhmcyt810op"]
+[gd_scene load_steps=16 format=3 uid="uid://boyhmcyt810op"]
 
+[ext_resource type="Script" uid="uid://dd11w05b2j3tv" path="res://scripts/levels/level_0.gd" id="1_bw3rj"]
 [ext_resource type="PackedScene" uid="uid://cuj1rienf2yql" path="res://scenes/player/player.tscn" id="1_sxr8l"]
+[ext_resource type="ArrayMesh" uid="uid://dqdbi0dcruh01" path="res://assets/model/pipeA.obj" id="2_wjk5u"]
+[ext_resource type="PackedScene" uid="uid://bx1xbb4frpwoa" path="res://scenes/player/level_trigger.tscn" id="3_osc7o"]
+[ext_resource type="ArrayMesh" uid="uid://56lkn4nu77bj" path="res://assets/model/pipeB.obj" id="3_xy1qu"]
+[ext_resource type="PackedScene" uid="uid://bow70eda3p6av" path="res://scenes/levels/pause_menu.tscn" id="6_jjvta"]
 
-[node name="Node3D" type="Node3D"]
+[sub_resource type="Environment" id="Environment_bw3rj"]
 
-[node name="floor" type="CSGBox3D" parent="."]
-transform = Transform3D(6, 0, 0, 0, 0.25, 0, 0, 0, 6, 0, -0.3, 0)
+[sub_resource type="PlaneMesh" id="PlaneMesh_bw3rj"]
 
-[node name="light" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.866025, 0, 0.5, -0.25, 0.866025, 0.433013, -0.433013, -0.5, 0.75, 2, 2, 2)
+[sub_resource type="Shader" id="Shader_jjvta"]
+code = "shader_type spatial;
 
-[node name="player" parent="." instance=ExtResource("1_sxr8l")]
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	// Called for every pixel the material is visible on.
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the material.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3mnpy"]
+render_priority = 0
+shader = SubResource("Shader_jjvta")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wjk5u"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_jjvta"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jjvta"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3mnpy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jjvta"]
+
+[node name="level 0" type="Node3D"]
+script = ExtResource("1_bw3rj")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bw3rj")
+
+[node name="light" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.465625, -0.836516, -0.288849, 0.451901, -0.0558862, 0.890316, -0.760906, -0.545085, 0.352001, 0.7, 3.2, 0.5)
+light_energy = 0.555
+light_specular = 0.556
+light_bake_mode = 1
+
+[node name="light2" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.465625, -0.836516, -0.288849, 0.433013, 0.5, -0.75, 0.771811, 0.224144, 0.595035, 0.7, 3.2, 0.5)
+light_energy = 0.333
+light_negative = true
+
+[node name="floor" type="MeshInstance3D" parent="WorldEnvironment"]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 3, 0, -0.1, 0)
+mesh = SubResource("PlaneMesh_bw3rj")
+
+[node name="PipeA" type="StaticBody3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -0.5)
+
+[node name="PipeModel" type="MeshInstance3D" parent="WorldEnvironment/PipeA"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.5, 0, 0.5)
+material_override = SubResource("ShaderMaterial_3mnpy")
+mesh = ExtResource("2_wjk5u")
+skeleton = NodePath("../..")
+
+[node name="Collision1" type="CollisionShape3D" parent="WorldEnvironment/PipeA"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 0.5)
+shape = SubResource("CylinderShape3D_wjk5u")
+
+[node name="Collision2" type="CollisionShape3D" parent="WorldEnvironment/PipeA"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 2.5)
+shape = SubResource("CylinderShape3D_wjk5u")
+
+[node name="PipeB" type="StaticBody3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WorldEnvironment/PipeB"]
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, -1, 0, 0)
+mesh = ExtResource("3_xy1qu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/PipeB"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+shape = SubResource("CylinderShape3D_jjvta")
+
+[node name="wallS" type="StaticBody3D" parent="WorldEnvironment"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WorldEnvironment/wallS"]
+transform = Transform3D(3, 0, 0, 0, -4.37114e-08, 2.5, 0, -1, -1.09278e-07, 0, 0, 3)
+mesh = SubResource("PlaneMesh_jjvta")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/wallS"]
+transform = Transform3D(6.125, 0, 0, 0, 1.3, 0, 0, 0, 1, -0.0110936, 0.485714, 3.46734)
+shape = SubResource("BoxShape3D_3mnpy")
+
+[node name="wallE" type="StaticBody3D" parent="WorldEnvironment"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WorldEnvironment/wallE"]
+transform = Transform3D(3, 0, 0, 0, -4.37114e-08, 2.5, 0, -1, -1.09278e-07, 0, 0, 3)
+mesh = SubResource("PlaneMesh_jjvta")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/wallE"]
+transform = Transform3D(6.125, 0, 0, 0, 1.3, 0, 0, 0, 1, -0.0110936, 0.485714, 3.46734)
+shape = SubResource("BoxShape3D_3mnpy")
+
+[node name="wallN" type="StaticBody3D" parent="WorldEnvironment"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WorldEnvironment/wallN"]
+transform = Transform3D(3, 0, 0, 0, -4.37114e-08, 2.5, 0, -1, -1.09278e-07, 0, 0, 3)
+mesh = SubResource("PlaneMesh_jjvta")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/wallN"]
+transform = Transform3D(6.125, 0, 0, 0, 1.3, 0, 0, 0, 1, -0.0110936, 0.485714, 3.46734)
+shape = SubResource("BoxShape3D_3mnpy")
+
+[node name="wallW" type="StaticBody3D" parent="WorldEnvironment"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WorldEnvironment/wallW"]
+transform = Transform3D(3, 0, 0, 0, -4.37114e-08, 2.5, 0, -1, -1.09278e-07, 0, 0, 3)
+mesh = SubResource("PlaneMesh_jjvta")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/wallW"]
+transform = Transform3D(6.125, 0, 0, 0, 1.3, 0, 0, 0, 1, -0.0110936, 0.485714, 3.46734)
+shape = SubResource("BoxShape3D_3mnpy")
+
+[node name="player-marker" type="Marker3D" parent="."]
+
+[node name="player" parent="player-marker" groups=["player"] instance=ExtResource("1_sxr8l")]
+
+[node name="LevelTrigger" parent="." instance=ExtResource("3_osc7o")]
+transform = Transform3D(0.342, 0, 0, 0, 0.34, 0, 0, 0, 0.34, 1, 7.45058e-09, -1)
+
+[node name="Area3D" type="Area3D" parent="LevelTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.19135e-08, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelTrigger/Area3D"]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0.257932, 0.0397878)
+shape = SubResource("BoxShape3D_jjvta")
+
+[node name="PauseMenu" parent="." instance=ExtResource("6_jjvta")]
+visible = false
+
+[connection signal="body_entered" from="LevelTrigger/Area3D" to="." method="_on_area_3d_body_entered"]

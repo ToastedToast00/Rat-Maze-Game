@@ -118,6 +118,22 @@
 			"type":"perspective"
 		}
 	],
+	"materials":[
+		{
+			"doubleSided":true,
+			"name":"Material.001",
+			"pbrMetallicRoughness":{
+				"baseColorFactor":[
+					0.23812440037727356,
+					0.06385140866041183,
+					0.021288041025400162,
+					1
+				],
+				"metallicFactor":0,
+				"roughnessFactor":0.4841269850730896
+			}
+		}
+	],
 	"meshes":[
 		{
 			"name":"Sphere",
@@ -129,7 +145,8 @@
 						"TEXCOORD_0":2,
 						"TANGENT":3
 					},
-					"indices":4
+					"indices":4,
+					"material":0
 				}
 			]
 		},

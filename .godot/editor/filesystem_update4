@@ -1,5 +1,9 @@
-res://scenes/levels/level_0.tscn
-res://scenes/player/player.tscn
-res://scenes/menu/settings.tscn
 res://scenes/menu/main_menu.tscn
 res://scripts/player/player.gd
+res://scenes/levels/level_0.tscn
+res://scenes/levels/level_1.tscn
+res://scenes/player/player.tscn
+res://scenes/menu/settings.tscn
+res://scenes/levels/pause_menu.tscn
+res://scenes/player/level_trigger.tscn
+res://scripts/levels/level_0.gd

@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bx1xbb4frpwoa"]
+
+[ext_resource type="ArrayMesh" uid="uid://cuhwuutgu5yuj" path="res://assets/model/cheese.obj" id="1_8ondg"]
+[ext_resource type="Script" uid="uid://3s53xan8aydv" path="res://scripts/player/level_trigger.gd" id="1_c72il"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c72il"]
+size = Vector3(0.8, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tb3na"]
+
+[node name="LevelTrigger" type="Node3D"]
+transform = Transform3D(0.342, 0, 0, 0, 0.34, 0, 0, 0, 0.34, 0, 0, 0)
+script = ExtResource("1_c72il")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="Area3D" type="Area3D" parent="StaticBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/Area3D"]
+transform = Transform3D(0.5, 0, 1.08927e-08, 0, 0.5, 0, 0, 0, 0.5, 0, 2.19135e-08, 0)
+mesh = ExtResource("1_8ondg")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/Area3D"]
+transform = Transform3D(0.351217, 0, 0.101142, 0, 0.45, 0, -0.0941085, 0, 0.377469, -0.042013, 0.243032, 0.260795)
+shape = SubResource("BoxShape3D_c72il")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D/Area3D"]
+transform = Transform3D(0.215358, 0, 0.0907286, 0, 0.45, 0, -0.0577052, 0, 0.338604, -0.186879, 0.242765, -0.19024)
+shape = SubResource("BoxShape3D_tb3na")
